@@ -1,0 +1,57 @@
+/* ── COLOURS & BASE TYPO ────────────────────────────────────────────────── */
+:root{
+  --red:#b00020;
+  --red-light:#fbe9e9;
+  --grey:#f1f1f1;
+  --shadow:0 4px 8px rgba(0,0,0,.05);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI',sans-serif;color:#333;background:#f9f9f9}
+
+/* ── TOP BAR ───────────────────────────────────────────────────────────── */
+.topbar{background:#fff;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;padding:15px 30px;box-shadow:var(--shadow)}
+.logo{font-size:1.4rem;font-weight:700;color:var(--red)}
+nav a{margin-right:20px;text-decoration:none;color:#333;font-weight:500}
+.btn-red,.btn-outline{border:none;border-radius:25px;padding:10px 20px;cursor:pointer;font-weight:600}
+.btn-red{background:var(--red);color:#fff}
+.btn-red.small{padding:8px 16px;font-size:.9rem}
+.btn-outline{background:transparent;color:var(--red);border:2px solid var(--red)}
+.btn-red:hover{opacity:.9}
+
+/* ── HERO & SEARCH ─────────────────────────────────────────────────────── */
+.hero{text-align:center;padding:40px 20px 20px}
+.hero h1{font-size:2rem;margin-bottom:15px}
+.search-bar{width:60%;max-width:500px;padding:12px;border:2px solid #ddd;border-radius:25px;font-size:1rem;outline:none}
+
+/* ── WELCOME BOX ───────────────────────────────────────────────────────── */
+.welcome{text-align:center;margin-top:40px}
+.info-box{background:var(--red-light);padding:20px;border-radius:10px;display:inline-flex;align-items:center;justify-content:space-between;gap:20px;width:80%;max-width:700px;margin:20px auto;box-shadow:var(--shadow)}
+
+/* ── TOPIC CARDS ───────────────────────────────────────────────────────── */
+.cards{display:flex;justify-content:center;gap:30px;margin:40px 0;flex-wrap:wrap}
+.card{background:#fff;padding:30px;border-radius:15px;text-align:center;width:220px;box-shadow:var(--shadow);transition:transform .2s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:60px;margin-bottom:10px}
+
+/* ── SUPPORT SECTION ───────────────────────────────────────────────────── */
+.support{text-align:center;padding:30px 20px;background:var(--red-light);margin:30px 0;border-radius:10px}
+.buttons{margin-top:20px}
+
+/* ── FOOTER ────────────────────────────────────────────────────────────── */
+.footer{background:var(--grey);padding:20px;text-align:center;font-size:.9rem;color:#666}
+.footer a{margin:0 10px;text-decoration:none;color:#666;font-weight:500}
+
+/* ── MODAL ─────────────────────────────────────────────────────────────── */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal.show{opacity:1;pointer-events:auto}
+.modal-content{background:#fff;border-radius:12px;max-width:650px;width:90%;padding:30px;box-shadow:var(--shadow);position:relative;max-height:80vh;overflow-y:auto}
+.close{position:absolute;top:12px;right:18px;font-size:1.5rem;cursor:pointer;color:#888}
+.close:hover{color:#000}
+.modal-content h2{margin:0;color:var(--red)}
+.modal-content p{line-height:1.55;margin-top:10px;white-space:pre-line}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+@media(max-width:600px){
+  .info-box{flex-direction:column;text-align:center}
+  .search-bar{width:90%}
+}

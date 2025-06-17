@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FraudGuard · Help Center</title>
+  <link rel="stylesheet" href="help.css" />
+</head>
+<body>
+  <!-- ── TOP BAR ─────────────────────────────────────────────────────────── -->
+  <header class="topbar">
+    <div class="logo">🔒 FraudGuard</div>
+    <nav>
+      <a href="#" data-topic="home">Home</a>
+      <a href="#" data-topic="topics">Help&nbsp;Topics</a>
+      <a href="#" data-topic="contact">Contact&nbsp;Us</a>
+      <a href="signin.html" class="btn-red small">Sign&nbsp;In</a>
+    </nav>
+  </header>
+
+  <!-- ── HERO ────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <h1>Hi, how can we help?</h1>
+    <input type="text" placeholder="Start your search here" class="search-bar">
+  </section>
+
+  <!-- ── WELCOME & QUICK SIGN‑IN PROMPT ──────────────────────────────────── -->
+  <section class="welcome">
+    <h2>Welcome!</h2>
+    <p>We recommend you take a look at the following topics and articles.</p>
+    <div class="info-box">
+      <span>Sign in for the quickest and most personalized support from FraudGuard</span>
+      <a href="signin.html" class="btn-red">Sign&nbsp;In</a>
+    </div>
+  </section>
+
+  <!-- ── TOPIC CARDS ──────────────────────────────────────────────────────── -->
+  <section class="cards">
+    <div class="card" data-topic="download">
+      <img src="https://img.icons8.com/ios-filled/100/download--v1.png" alt="">
+      <p>Download &amp; Install</p>
+    </div>
+    <div class="card" data-topic="billing">
+      <img src="https://img.icons8.com/ios-filled/100/email.png" alt="">
+      <p>Account &amp; Billing</p>
+    </div>
+    <div class="card" data-topic="scams">
+      <img src="https://img.icons8.com/ios-filled/100/error.png" alt="">
+      <p>Cyber Scams</p>
+    </div>
+  </section>
+
+  <!-- ── EXTRA SUPPORT SECTION ───────────────────────────────────────────── -->
+  <section class="support">
+    <h3>Can't find what you're looking for?</h3>
+    <p>Try signing in for more support options or reach out to our team below.</p>
+    <div class="buttons">
+      <a href="signin.html" class="btn-red small">Sign&nbsp;In</a>
+      <a href="signin.html" class="btn-red">Sign&nbsp;In</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <a href="#" data-topic="about">About</a>
+    <a href="#" data-topic="privacy">Privacy</a>
+    <a href="#" data-topic="contact">Contact&nbsp;Us</a>
+    <p>© 2025 FraudGuard – Secure the web, confidently.</p>
+  </footer>
+
+  <!-- ── MODAL (HIDDEN BY DEFAULT) ───────────────────────────────────────── -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-body"></p>
+    </div>
+  </div>
+
+  <!-- ── SCRIPT: CLICK HANDLERS & CONTENT ────────────────────────────────── -->
+  <script>
+    /* long helpful explanations, each >100 words */
+    const topicText = {
+      download: `Installing FraudGuard is as quick as it is secure, but every
+      browser environment is a little different, so this guide walks you through
+      the complete process step by step. Begin by opening the Chrome Web Store
+      and typing “FraudGuard” into the search bar. Confirm that the publisher
+      name reads “FraudGuard Security Labs” so you know you’re downloading the
+      official build. Click the blue “Add to Chrome” button, review the minimal
+      permissions we request—limited to reading URLs so we can check them
+      against our fraud database—and then approve the install. Chrome downloads
+      the signed CRX package, validates its signature to ensure it hasn’t been
+      tampered with, and automatically enables it. The shield icon appears next
+      to your address bar; you can pin it by clicking the puzzle‑piece icon for
+      instant access. If you’re on a managed network that disables the Web
+      Store, fetch the offline installer from our enterprise page along with a
+      JSON policy file to roll the extension out to multiple endpoints.`,
+      
+      billing: `FraudGuard follows a people‑first subscription model, meaning a
+      single license covers every desktop browser profile you sign into. We use
+      Stripe for billing to guarantee PCI‑DSS Level 1 compliance and offer a
+      wide range of regional payment methods, from international credit cards to
+      UPI and Paytm in India. In your Account Portal you can download tax‑ready
+      invoices, change billing frequency, or swap payment methods without
+      contacting support. Cancelation is self‑service and immediate: protection
+      remains active until the end of your term, after which your account
+      downgrades gracefully to the free tier with no loss of data or settings.
+      We offer prorated refunds within the first thirty days because security
+      products must earn your trust. Students, educators, and recognised
+      non‑profits qualify for permanent discounts—open a ticket with valid proof
+      and our team will adjust your plan accordingly.`,
+      
+      scams: `Fraud evolves daily, yet the psychological triggers attackers rely
+      on remain unchanged: urgency, curiosity, and fear. FraudGuard’s threat
+      engine harvests feeds from phishing takedown networks, brand‑abuse
+      trackers, and our own machine‑learning classifier that inspects DOM
+      fingerprints in real time. When you land on a suspicious site, a bold red
+      banner appears with clear language explaining the danger. You can still
+      proceed if you’re absolutely certain, but we log the event anonymously so
+      our analysts can review false positives. Remember common red flags:
+      misspelled domains, awkward grammar, and requests for cryptocurrency
+      payments are giant warning signs. If you encounter a new scam, hit the
+      “Flag Scam” option in the banner—this packages a hash of the page, never
+      your personal data, and forwards it to our analysts. Our average takedown
+      partnership removes malicious sites within twelve hours of first report.`,
+      
+      signin: `Signing in unlocks FraudGuard Premium: live phishing lookups,
+      breach‑monitor alerts, and cloud‑sync preferences. We use OAuth 2.0 with
+      short‑lived access tokens so your credentials never reside inside the
+      extension. After clicking any “Sign In” button you’ll be redirected to
+      accounts.fraudguard.app, where we recommend enabling a second factor such
+      as TOTP or FIDO U2F security keys. Once authenticated you’re returned to
+      the Help Center, the toolbar icon turns red, and premium features activate
+      seamlessly in the background. Forgot your password? The reset link
+      expires after sixty minutes for extra safety. Social log‑ins via Google,
+      GitHub, and Apple ID are fully supported so you can use whichever identity
+      provider you trust most.`,
+      
+      support: `Our support desk is operated by real cybersecurity engineers, not
+      outsourced call centres reading from scripts. Email
+      support@fraudguard.app, start a live chat on our homepage, or join our
+      public Discord where the core dev team answers questions between code
+      sprints. Include the full URL of any suspicious site, browser version, and
+      steps to reproduce the problem—this cuts diagnosis time in half. Premium
+      users receive responses within two hours, but we aim to reply faster.
+      Telephone callbacks can be scheduled from the portal; we will never phone
+      you unexpectedly because scammers spoof security companies. All tickets
+      are stored encrypted at rest, and we regularly publish anonymised case
+      studies so the community benefits from lessons learned.`,
+      
+      about: `FraudGuard began as a weekend experiment by two friends who kept
+      removing malware from family laptops. We realised that traditional
+      antivirus software focused on viruses, not the modern plague of fake
+      stores, phishing portals, and tech‑support scams draining people’s
+      savings. Today our team includes threat researchers, former law‑
+      enforcement analysts, and ethical hackers united by a mission: make
+      trustworthy browsing free and frictionless. We operate on three core
+      principles—transparency, respectful data handling, and community‑driven
+      innovation. All critical components are open to independent audit, every
+      feature request is discussed publicly in GitHub issues, and a portion of
+      revenue is reinvested into takedown campaigns that remove fraudulent sites
+      at the hosting level. FraudGuard is more than a browser extension; it is a
+      pledge that ordinary users deserve the same calibre of protection Fortune
+      500 companies enjoy.`,
+      
+      privacy: `We designed FraudGuard to be privacy‑first from day one because
+      security without privacy is a half‑measure. The extension never logs full
+      URLs, page content, keystrokes, or cookies. To perform cloud reputation
+      checks we hash the hostname and send only that anonymised fingerprint over
+      an encrypted channel, discarding the request after the verdict is
+      returned. Crash reports and telemetry are strictly opt‑in and, when
+      enabled, are scrubbed of any personally identifying information before
+      leaving your device. Our infrastructure is hosted in ISO 27001‑certified
+      data centres located in privacy‑friendly jurisdictions and is subjected to
+      quarterly penetration tests. We are fully GDPR‑compliant and support data
+      deletion requests that are processed within seventy‑two hours. Your data
+      stays yours—always.`,
+      
+      contact: `Need to reach us? We offer multiple secure channels so you can
+      choose whichever suits you best. For routine questions, email
+      support@fraudguard.app; average response time is under two hours on
+      business days. Complex technical cases can be opened directly on our
+      GitHub tracker where engineers collaborate openly. Real‑time assistance is
+      available via live chat on fraudguard.app or our community Discord, which
+      also hosts weekly “Ask‑Me‑Anything” sessions with the development team.
+      Media, partnership, or legal inquiries should be directed to
+      press@fraudguard.app. We never outsource support, so the people replying
+      are the same folks building the product. Include browser version, OS, and
+      any relevant screenshots for fastest resolution. We genuinely value your
+      input—every feature on our roadmap began as a user suggestion!`
+    };
+
+    /* modal controls */
+    const modal      = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody  = document.getElementById('modal-body');
+    const closeBtn   = document.querySelector('.close');
+    const closeModal = () => modal.classList.remove('show');
+
+    function openModal(key) {
+      if (!topicText[key]) return;
+      modalTitle.textContent = key.replace(/^\w/, c => c.toUpperCase()).replace('-', ' ');
+      modalBody.textContent  = topicText[key];
+      modal.classList.add('show');
+    }
+
+    document.addEventListener('click', e => {
+      const el = e.target.closest('[data-topic]');
+      if (el) { e.preventDefault(); openModal(el.dataset.topic); }
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  </script>
+</body>
+</html>

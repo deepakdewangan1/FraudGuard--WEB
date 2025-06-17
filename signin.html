@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In - FraudGuard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background: #fff;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 50px;
+      border: 2px solid #5a67d8;
+      background: #fff;
+      color: #5a67d8;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: #5a67d8;
+      color: #fff;
+    }
+    .btn img {
+      height: 18px;
+      margin-right: 10px;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+    }
+    .divider:not(:empty)::before {
+      margin-right: .75em;
+    }
+    .divider:not(:empty)::after {
+      margin-left: .75em;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    button.signin {
+      width: 100%;
+      padding: 12px;
+      background: #5a67d8;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .link a {
+      color: #5a67d8;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sign in to FraudGuard</h2>
+
+    <div class="btn"><img src="https://img.icons8.com/ios-filled/30/apple-logo.png" alt=""> Sign in with Apple</div>
+    <div class="btn"><img src="https://img.icons8.com/color/30/google-logo.png" alt=""> Sign in with Google</div>
+    <div class="btn"><img src="https://img.icons8.com/color/30/windows-10.png" alt=""> Sign in with Microsoft</div>
+
+    <div class="divider">or</div>
+
+    <form>
+      <input type="email" placeholder="Email" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit" class="signin">Sign In</button>
+    </form>
+
+    <div class="link">
+      <a href="#">Use a one-time passcode</a>
+    </div>
+
+    <div class="link" style="margin-top: 10px;">
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>
